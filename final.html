@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our 1,095 Days ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    color: white;
+}
+
+/* Screens */
+.screen {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: fade 0.6s ease;
+    text-align: center;
+    padding: 20px;
+}
+.active { display: flex; }
+
+@keyframes fade {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Home */
+#home {
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+}
+
+.main-title {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, #141e30, #ff758c, #000000);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 6s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Menu */
+.photo-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.photo-btn {
+    cursor: pointer;
+    transition: 0.3s;
+}
+.photo-btn:hover {
+    transform: scale(1.05);
+}
+
+.photo-btn img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.label {
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Gallery */
+.gallery {
+    width: 100%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/* Buttons */
+button {
+    margin-top: 20px;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 20px;
+    background: white;
+    color: #ff4d6d;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* Viewer */
+.viewer {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.viewer img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 20px;
+}
+
+/* Floating Hearts */
+.heart {
+    position: fixed;
+    color: white;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <!-- Put mp3 inside your project folder -->
+    <source src="imag/Until I Found You - Stephen Sanchez.mp3" type="audio/mpeg">
+</audio>
+
+<!-- HOME -->
+<div class="screen active" id="home">
+    <div class="main-title">
+        Our 1,095 Days of You ❤️
+    </div>
+
+    <div class="photo-menu">
+
+        <div class="photo-btn" onclick="openScreen('memories')">
+            <img src="imag/Memories.JPG">
+            <div class="label">Memories 📸</div>
+        </div>
+
+        <div class="photo-btn" onclick="openScreen('achievements')">
+            <img src="imag/OurAchievements.jpg">
+            <div class="label">Our Achievements 🏆</div>
+        </div>
+
+        <div class="photo-btn" onclick="openScreen('moments')">
+            <img src="imag/LovelyMoments.jpg">
+            <div class="label">Lovely Moments ❤️</div>
+        </div>
+
+        <div class="photo-btn" onclick="gift()">
+            <img src="imag/GiftSurprise.jpg">
+            <div class="label">Gift Surprise 🎁</div>
+        </div>
+
+        <div class="photo-btn" onclick="confetti()">
+            <img src="imag/Celebrate.jpeg">
+            <div class="label">Celebrate 🎊</div>
+        </div>
+
+        <div class="photo-btn" onclick="openLetter()">
+            <img src="imag/LoveLetter.jpg">
+            <div class="label">Love Letter 💌</div>
+        </div>
+
+    </div>
+</div>
+
+<!-- MEMORIES -->
+<div class="screen" id="memories">
+    <h1>Memories 📸</h1>
+    <div class="gallery">
+        <img src="imag/Memories1.jpeg" onclick="view(this.src)">
+        <img src="imag/Memories2.jpeg" onclick="view(this.src)">
+        <img src="imag/Memories3.jpeg" onclick="view(this.src)">
+    </div>
+    <button onclick="goHome()">Back ❤️</button>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div class="screen" id="achievements">
+    <h1>Our Achievements 🏆</h1>
+    <div class="gallery">
+        <img src="imag/a1.jpg" onclick="view(this.src)">
+        <img src="imag/a2.jpg" onclick="view(this.src)">
+    </div>
+    <button onclick="goHome()">Back ❤️</button>
+</div>
+
+<!-- MOMENTS -->
+<div class="screen" id="moments">
+    <h1>Lovely Moments ❤️</h1>
+    <div class="gallery">
+        <img src="imag/l1.jpeg" onclick="view(this.src)">
+        <img src="imag/l2.jpeg" onclick="view(this.src)">
+    </div>
+    <button onclick="goHome()">Back ❤️</button>
+</div>
+
+<!-- VIEWER -->
+<div class="viewer" id="viewer" onclick="closeViewer()">
+    <img id="viewerImg">
+</div>
+
+<script>
+function openScreen(id) {
+    document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+function goHome() { openScreen("home"); }
+
+function view(src) {
+    document.getElementById("viewer").style.display = "flex";
+    document.getElementById("viewerImg").src = src;
+}
+function closeViewer() {
+    document.getElementById("viewer").style.display = "none";
+}
+
+function gift() {
+    alert("Surprise ❤️ Thank You For 1,095 Beautiful Days 😌");
+}
+
+function confetti() {
+    for (let i = 0; i < 40; i++) {
+        const c = document.createElement("div");
+        c.innerHTML = "💜";
+        c.style.position = "fixed";
+        c.style.left = Math.random() * 100 + "vw";
+        c.style.top = "0px";
+        document.body.appendChild(c);
+
+        let fall = setInterval(() => {
+            c.style.top = parseInt(c.style.top) + 5 + "px";
+        }, 20);
+
+        setTimeout(() => {
+            clearInterval(fall);
+            c.remove();
+        }, 2000);
+    }
+}
+
+function openLetter() {
+    alert("Happy Anniversary ❤️ You are my forever 💞");
+}
+
+let musicPlayed = false;
+document.addEventListener("click", function() {
+    if (!musicPlayed) {
+        const music = document.getElementById("bgMusic");
+        music.volume = 0.4;
+        music.play();
+        musicPlayed = true;
+    }
+});
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
